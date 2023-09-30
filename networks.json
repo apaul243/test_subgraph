@@ -3,6 +3,9 @@
     "GNSTradingV6_4": {
       "address": "0x32530f38cB1ebC1B7389325d754B40fF53cb77f0",
       "startBlock": 38251391
+    },
+    "GNSTradingCallbacksV6_4": {
+      "address": "0xfb7aCB7C94A7713E9543f364983108aF6719b687"
     }
   }
 }

@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x32530f38cB1ebC1B7389325d754B40fF53cb77f0"
       abi: GNSTradingV6_4
-      startBlock: 38251391
+      startBlock:	39813597
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -31,7 +31,8 @@ dataSources:
         - name: GNSTradingV6_4
           file: ./abis/GNSTradingV6_4.json
       eventHandlers:
-        - event: ChainlinkCallbackTimeout(indexed uint256,((address,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256),uint256,uint256,uint256,uint256,uint256))
+        - event: ChainlinkCallbackTimeout(indexed
+            uint256,((address,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256),uint256,uint256,uint256,uint256,uint256))
           handler: handleChainlinkCallbackTimeout
         - event: CouldNotCloseTrade(indexed address,indexed uint256,uint256)
           handler: handleCouldNotCloseTrade
@@ -49,7 +50,8 @@ dataSources:
           handler: handleOpenLimitCanceled
         - event: OpenLimitPlaced(indexed address,indexed uint256,uint256)
           handler: handleOpenLimitPlaced
-        - event: OpenLimitUpdated(indexed address,indexed uint256,uint256,uint256,uint256,uint256,uint256)
+        - event: OpenLimitUpdated(indexed address,indexed
+            uint256,uint256,uint256,uint256,uint256,uint256)
           handler: handleOpenLimitUpdated
         - event: Paused(bool)
           handler: handlePaused
@@ -58,3 +60,74 @@ dataSources:
         - event: TpUpdated(indexed address,indexed uint256,uint256,uint256)
           handler: handleTpUpdated
       file: ./src/gns-trading-v-6-4.ts
+  - kind: ethereum
+    name: GNSTradingCallbacksV6_4
+    network: mumbai
+    source:
+      address: "0xfb7aCB7C94A7713E9543f364983108aF6719b687"
+      abi: GNSTradingCallbacksV6_4
+      startBlock:	39813597
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BorrowingFeeCharged
+        - CanExecuteTimeoutUpdated
+        - ClosingFeeSharesPUpdated
+        - DaiVaultFeeCharged
+        - DevGovFeeCharged
+        - GNSTradingCallbacksV6_4Done
+        - Initialized
+        - LimitExecuted
+        - MarketCloseCanceled
+        - MarketExecuted
+        - MarketOpenCanceled
+        - NftBotFeeCharged
+        - NftOrderCanceled
+        - PairMaxLeverageUpdated
+        - Pause
+        - ReferralFeeCharged
+        - SssFeeCharged
+      abis:
+        - name: GNSTradingCallbacksV6_4
+          file: ./abis/GNSTradingCallbacksV6_4.json
+      eventHandlers:
+        - event: BorrowingFeeCharged(indexed address,uint256,uint256)
+          handler: handleBorrowingFeeCharged
+        - event: CanExecuteTimeoutUpdated(uint256)
+          handler: handleCanExecuteTimeoutUpdated
+        - event: ClosingFeeSharesPUpdated(uint256,uint256,uint256)
+          handler: handleClosingFeeSharesPUpdated
+        - event: DaiVaultFeeCharged(indexed address,uint256)
+          handler: handleDaiVaultFeeCharged
+        - event: DevGovFeeCharged(indexed address,uint256)
+          handler: handleDevGovFeeCharged
+        - event: Done(bool)
+          handler: handleDone
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: LimitExecuted(indexed
+            uint256,uint256,(address,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256),indexed
+            address,uint8,uint256,uint256,uint256,int256,uint256,bool)
+          handler: handleLimitExecuted
+        - event: MarketCloseCanceled(indexed uint256,indexed address,indexed uint256,uint256,uint8)
+          handler: handleMarketCloseCanceled
+        - event: MarketExecuted(indexed
+            uint256,(address,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256),bool,uint256,uint256,uint256,int256,uint256)
+          handler: handleMarketExecuted
+        - event: MarketOpenCanceled(indexed uint256,indexed address,indexed uint256,uint8)
+          handler: handleMarketOpenCanceled
+        - event: NftBotFeeCharged(indexed address,uint256)
+          handler: handleNftBotFeeCharged
+        - event: NftOrderCanceled(indexed uint256,indexed address,uint8,uint8)
+          handler: handleNftOrderCanceled
+        - event: PairMaxLeverageUpdated(indexed uint256,uint256)
+          handler: handlePairMaxLeverageUpdated
+        - event: Pause(bool)
+          handler: handlePause
+        - event: ReferralFeeCharged(indexed address,uint256)
+          handler: handleReferralFeeCharged
+        - event: SssFeeCharged(indexed address,uint256)
+          handler: handleSssFeeCharged
+      file: ./src/gns-trading-callbacks-v-6-4.ts
