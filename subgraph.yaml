@@ -1,0 +1,60 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: GNSTradingV6_4
+    network: mumbai
+    source:
+      address: "0x32530f38cB1ebC1B7389325d754B40fF53cb77f0"
+      abi: GNSTradingV6_4
+      startBlock: 38251391
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ChainlinkCallbackTimeout
+        - CouldNotCloseTrade
+        - Done
+        - MarketOrderInitiated
+        - NftOrderInitiated
+        - NftOrderSameBlock
+        - NumberUpdated
+        - OpenLimitCanceled
+        - OpenLimitPlaced
+        - OpenLimitUpdated
+        - Paused
+        - SlUpdated
+        - TpUpdated
+      abis:
+        - name: GNSTradingV6_4
+          file: ./abis/GNSTradingV6_4.json
+      eventHandlers:
+        - event: ChainlinkCallbackTimeout(indexed uint256,((address,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256),uint256,uint256,uint256,uint256,uint256))
+          handler: handleChainlinkCallbackTimeout
+        - event: CouldNotCloseTrade(indexed address,indexed uint256,uint256)
+          handler: handleCouldNotCloseTrade
+        - event: Done(bool)
+          handler: handleDone
+        - event: MarketOrderInitiated(indexed uint256,indexed address,indexed uint256,bool)
+          handler: handleMarketOrderInitiated
+        - event: NftOrderInitiated(uint256,indexed address,indexed address,indexed uint256)
+          handler: handleNftOrderInitiated
+        - event: NftOrderSameBlock(indexed address,indexed address,indexed uint256)
+          handler: handleNftOrderSameBlock
+        - event: NumberUpdated(string,uint256)
+          handler: handleNumberUpdated
+        - event: OpenLimitCanceled(indexed address,indexed uint256,uint256)
+          handler: handleOpenLimitCanceled
+        - event: OpenLimitPlaced(indexed address,indexed uint256,uint256)
+          handler: handleOpenLimitPlaced
+        - event: OpenLimitUpdated(indexed address,indexed uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleOpenLimitUpdated
+        - event: Paused(bool)
+          handler: handlePaused
+        - event: SlUpdated(indexed address,indexed uint256,uint256,uint256)
+          handler: handleSlUpdated
+        - event: TpUpdated(indexed address,indexed uint256,uint256,uint256)
+          handler: handleTpUpdated
+      file: ./src/gns-trading-v-6-4.ts

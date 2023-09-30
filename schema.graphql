@@ -1,0 +1,145 @@
+type ChainlinkCallbackTimeout @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  order_trade_trader: Bytes! # address
+  order_trade_pairIndex: BigInt! # uint256
+  order_trade_index: BigInt! # uint256
+  order_trade_initialPosToken: BigInt! # uint256
+  order_trade_positionSizeDai: BigInt! # uint256
+  order_trade_openPrice: BigInt! # uint256
+  order_trade_buy: Boolean! # bool
+  order_trade_leverage: BigInt! # uint256
+  order_trade_tp: BigInt! # uint256
+  order_trade_sl: BigInt! # uint256
+  order_block: BigInt! # uint256
+  order_wantedPrice: BigInt! # uint256
+  order_slippageP: BigInt! # uint256
+  order_spreadReductionP: BigInt! # uint256
+  order_tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CouldNotCloseTrade @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Done @entity(immutable: true) {
+  id: Bytes!
+  done: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketOrderInitiated @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  open: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NftOrderInitiated @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  nftHolder: Bytes! # address
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NftOrderSameBlock @entity(immutable: true) {
+  id: Bytes!
+  nftHolder: Bytes! # address
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NumberUpdated @entity(immutable: true) {
+  id: Bytes!
+  name: String! # string
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OpenLimitCanceled @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OpenLimitPlaced @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OpenLimitUpdated @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  newPrice: BigInt! # uint256
+  newTp: BigInt! # uint256
+  newSl: BigInt! # uint256
+  maxSlippageP: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Paused @entity(immutable: true) {
+  id: Bytes!
+  paused: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SlUpdated @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  newSl: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TpUpdated @entity(immutable: true) {
+  id: Bytes!
+  trader: Bytes! # address
+  pairIndex: BigInt! # uint256
+  index: BigInt! # uint256
+  newTp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
